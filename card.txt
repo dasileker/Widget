@@ -1,0 +1,65 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.grey,
+      ),
+      home: const MyHomePage(title: 'test app'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xff00BCD1),// add colors to background
+
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(widget.title),
+      ),
+      // ignore: avoid_unnecessary_containers
+      body: Row( // row to make top level  widget that take 2 children
+
+        mainAxisAlignment: MainAxisAlignment.spaceAround,// for x alignement
+        crossAxisAlignment: CrossAxisAlignment.start,// for y alignment
+          children: [
+            Flexible(
+              child: Column(
+                children: const  [
+                  Text('data'),
+            
+                  Text('data'),
+            
+                  Text('data'),
+            
+                  Text('data'),
+                ]
+              ),
+            ),
+            Flexible(child: Image.asset('assets/image1.jpg'))
+          ],
+        ),
+        //you can set more BoxShadow() here
+    );
+  }
+}
