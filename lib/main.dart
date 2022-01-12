@@ -32,7 +32,6 @@
 // class _MyHomePageState extends State<MyHomePage> {
 //   @override
 //   Widget build(BuildContext context) {
-    
 
 // const titleText = Padding(
 //       padding: EdgeInsets.all(20),
@@ -45,7 +44,7 @@
 //         ),
 //       ),
 //     );
-    
+
 //     const subTitle = Text(
 //       'Pavlova is a meringue-based dessert named after the Russian ballerina '
 //       'Anna Pavlova. Pavlova features a crisp crust and soft, light inside, '
@@ -169,8 +168,6 @@
 //   }
 // }
 
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
@@ -218,8 +215,16 @@ class MyApp extends StatelessWidget {
     var stars = Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Icon(Icons.star, color: Colors.green[500],size: 20,),
-        Icon(Icons.star, color: Colors.green[500], size: 20,),
+        Icon(
+          Icons.star,
+          color: Colors.green[500],
+          size: 20,
+        ),
+        Icon(
+          Icons.star,
+          color: Colors.green[500],
+          size: 20,
+        ),
         Icon(Icons.star, color: Colors.green[500]),
         const Icon(Icons.star, color: Colors.black),
         const Icon(Icons.star, color: Colors.black),
@@ -263,27 +268,39 @@ class MyApp extends StatelessWidget {
     final iconList = DefaultTextStyle.merge(
       style: descTextStyle,
       child: Container(
-        padding: const EdgeInsets.all(20),
+        //!padding: const EdgeInsets.all(20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Column(
               children: [
-                Icon(Icons.kitchen, color: Colors.green[500],size: 20,),
+                Icon(
+                  Icons.kitchen,
+                  color: Colors.green[500],
+                  size: 20,
+                ),
                 const Text('PREP:'),
                 const Text('25 min'),
               ],
             ),
             Column(
               children: [
-                Icon(Icons.timer, color: Colors.green[500],size: 20,),
+                Icon(
+                  Icons.timer,
+                  color: Colors.green[500],
+                  size: 20,
+                ),
                 const Text('COOK:'),
                 const Text('1 hr'),
               ],
             ),
             Column(
               children: [
-                Icon(Icons.restaurant, color: Colors.green[500],size: 20,),
+                Icon(
+                  Icons.restaurant,
+                  color: Colors.green[500],
+                  size: 20,
+                ),
                 const Text('FEEDS:'),
                 const Text('4-6'),
               ],
@@ -296,7 +313,7 @@ class MyApp extends StatelessWidget {
 
     // #docregion leftColumn
     final leftColumn = Container(
-      padding: const EdgeInsets.fromLTRB(0, 30, 20, 0),
+      // padding: const EdgeInsets.fromLTRB(0, 30, 20, 0),
       child: Column(
         children: [
           titleText,
@@ -318,22 +335,23 @@ class MyApp extends StatelessWidget {
         title: Text(title),
       ),
       // #docregion body
-      body: Container(
-          margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-          height: 600,
-          child: Card(
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  width: 240,
-                  child: leftColumn,
-                ),
-                Expanded(child: mainImage),
-              ],
+      body: Builder(builder: (context) {
+        return SingleChildScrollView(
+          child: Container(
+            // margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+            height: MediaQuery.of(context).size.height,
+            child: Card(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(child: mainImage),
+                  Expanded(child: leftColumn),
+                ],
+              ),
             ),
           ),
-      ),
+        );
+      }),
       // #enddocregion body
     );
   }
